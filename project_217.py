@@ -57,7 +57,7 @@ try:
             radar_azimuth = math.degrees(detect.azimuth)
             radar_altitude = math.degrees(detect.altitude)
 
-            #rear_view = carla.Vector3D(#write code here)
+            rear_view = carla.Vector3D(x=-(detect.depth-1))
             new_pitch = radar_current_rotation.pitch + radar_altitude
             new_yaw = radar_current_rotation.yaw + radar_azimuth
             new_roll = radar_current_rotation.roll
@@ -66,11 +66,11 @@ try:
                 yaw=new_yaw,
                 roll=new_roll)).transform(rear_view)
 
-            debug.#write code here for draw_string(
+            debug.draw_string(
                 radar_data.transform.location + rear_view,
-                #write text here,
+                Riya,
                 life_time=0.06,
-                color=carla.Color(255, 0, 0))#change values for color change to sky blue
+                color=carla.Color(0, 210, 255))#change values for color change to sky blue
 
 
     actor_list.append(sensor)
